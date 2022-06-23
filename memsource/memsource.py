@@ -1,9 +1,6 @@
-import re
 import requests
-import os
 import json
-import pickle
-import csv
+
 
 class Memsource():
     url = 'https://cloud.memsource.com/web/api2/v1/'
