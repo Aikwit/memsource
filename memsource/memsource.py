@@ -240,7 +240,7 @@ class Memsource():
         req_str = self.url + 'projects/' + str(projectUid) + '/jobs/' + str(jobUid) + '/original'
         resp = self.get(req_str)
         return resp
-
+    
     # https://cloud.memsource.com/web/api2/v2/projects/{projectUid}/jobs
     def list_jobs_by_project(self, projectUid, workflowLevel):
         params = {
@@ -249,13 +249,15 @@ class Memsource():
         req_str = self.url + 'projects/' + str(projectUid) + '/jobs'
         req_str = req_str.replace('web/api2/v1/', 'web/api2/v2/')
         resp = self.get2(req_str, params)
+        #print(resp.json())
         if resp.status_code == 200:
-            if resp["totalPages"] == 1:
+            if resp.json()["totalPages"] == 1:
                 return [resp,]
             else:
                 merged_resp = []
-                for i in range(resp["totalPages"] == 1):
-                    req_str = self.url + 'projects/' + str(projectUid) + '/jobs'  + '&pageNumber=' + str(i)
+                for i in range(resp.json()["totalPages"]):
+                    
+                    req_str = self.url + 'projects/' + str(projectUid) + '/jobs'  + '?pageNumber=' + str(i)
                     req_str = req_str.replace('web/api2/v1/', 'web/api2/v2/')
                     resp2 = self.get2(req_str, params)
                     merged_resp.append(resp2)
