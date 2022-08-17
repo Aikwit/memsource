@@ -113,10 +113,10 @@ class Memsource():
         resp = self.delete(req_str, projectUid)
         return resp
 
-    def create_job(self, projectUid, payload):
-        req_str = self.url + 'projects/' + str(projectUid) +'/jobs'
-        resp = self.post(req_str, payload)
-        return resp
+    #def create_job(self, projectUid, payload):
+    #    req_str = self.url + 'projects/' + str(projectUid) +'/jobs'
+    #    resp = self.post(req_str, payload)
+    #    return resp
 
     def create_tm(self, payload):
         req_str = self.url + 'transMemories'
