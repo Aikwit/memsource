@@ -304,3 +304,9 @@ class Memsource():
         req_str = self.url + "projects/" + str(projectUid) + "/jobs/" + str(jobUid)
         resp = self.get(req_str)
         return resp
+
+    # {{baseUrl}}/api2/v1/projects/:projectUid/applyTemplate/:templateUid/assignProviders/forJobParts
+    def assign_providers(self, projectUid, templateUid, jobs):
+        req_str = self.url + "projects/" + str(projectUid) + "/applyTemplate/" + str(templateUid) + "/assignProviders/forJobParts"
+        resp = self.post(req_str, payload=jobs)
+        return resp
