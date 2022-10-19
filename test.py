@@ -1,5 +1,12 @@
 from memsource.memsource import Memsource
+import json
 
 memsourceAccount = Memsource("andraz_aikwit", "@9RiUIo8Jja&")
 
-print(memsourceAccount.get_user_assigned_jobs("533049", {}))
+project_payload = {
+        "name": "andraz test",
+        "targetLangs": ["en", "de"]
+    }
+
+resp = memsourceAccount.create_project_from_template("6LXpNqyapZGbeJP8MCZ0r0", json.dumps(project_payload))
+print(resp.text)

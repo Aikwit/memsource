@@ -13,3 +13,5 @@ package-one==1.9.4
 git+https://github.com/path/to/package-two@41b95ec#egg=package-two
 package-three==1.0.1
 ```
+
+## force reinstall to update

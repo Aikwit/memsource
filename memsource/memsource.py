@@ -49,7 +49,7 @@ class Memsource():
             headers["Authorization"] = f'ApiToken {self.auth_token}'
 
         #response = requests.request("GET", url, data=json.dumps(payload), params=json.dumps(params), headers=json.dumps(headers))
-        response = requests.request("GET", url, data=payload, params=params, headers=headers)
+        response = requests.request("GET", url, data=json.dumps(payload), params=params, headers=headers)
         return response
 
     def post3(self, url, payload=None, params=None, headers=None):
@@ -71,7 +71,7 @@ class Memsource():
             headers["Authorization"] = f'ApiToken {self.auth_token}'
 
         #response = requests.request("POST", url, data=json.dumps(payload), params=json.dumps(params), headers=json.dumps(headers))
-        response = requests.request("POST", url, data=payload, params=params, headers=headers)
+        response = requests.request("POST", url, data=json.dumps(payload), params=params, headers=headers)
         return response
 
     def delete3(self, url, payload=None, params=None, headers=None):
@@ -91,7 +91,7 @@ class Memsource():
         else:
             headers["Authorization"] = f'ApiToken {self.auth_token}'
 
-        resp = requests.delete(url, data=payload, params=params, headers=headers)
+        resp = requests.delete(url, data=json.dumps(payload), params=params, headers=headers)
         return resp
 
     def put3(self, url, payload=None, params=None, headers=None):
@@ -111,7 +111,7 @@ class Memsource():
         else:
             headers["Authorization"] = f'ApiToken {self.auth_token}'
 
-        resp = requests.put(url, data=payload, params=params, headers=headers)
+        resp = requests.put(url, data=json.dumps(payload), params=params, headers=headers)
         return resp
 
 
