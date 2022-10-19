@@ -45,6 +45,15 @@ class Memsource():
             'Content-Type': 'application/json',
             'Authorization': f'ApiToken {self.auth_token}'
             }
+
+            # to ne dela, ker potem pri generiranju targeta javi, da ni acceptable
+            '''
+            headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': f'ApiToken {self.auth_token}'
+            }
+            '''
         else:
             headers["Authorization"] = f'ApiToken {self.auth_token}'
 
@@ -67,11 +76,16 @@ class Memsource():
             'Content-Type': 'application/json',
             'Authorization': f'ApiToken {self.auth_token}'
             }
+            
         else:
             headers["Authorization"] = f'ApiToken {self.auth_token}'
 
+        if headers["Content-Type"] == "application/octet-stream":
+            response = requests.request("POST", url, data=payload, params=params, headers=headers)
+        else:
+
         #response = requests.request("POST", url, data=json.dumps(payload), params=json.dumps(params), headers=json.dumps(headers))
-        response = requests.request("POST", url, data=json.dumps(payload), params=params, headers=headers)
+            response = requests.request("POST", url, data=json.dumps(payload), params=params, headers=headers)
         return response
 
     def delete3(self, url, payload=None, params=None, headers=None):
