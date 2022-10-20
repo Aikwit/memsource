@@ -378,5 +378,9 @@ class Memsource():
     # {{baseUrl}}/api2/v1/projects/:projectUid/applyTemplate/:templateUid/assignProviders/forJobParts
     def assign_providers(self, projectUid, templateUid, payload=None, params=None, headers=None):
         req_str = self.url + "projects/" + str(projectUid) + "/applyTemplate/" + str(templateUid) + "/assignProviders/forJobParts"
-        resp = self.post3(req_str, payload)
+        resp = self.post3(req_str, payload, params, headers)
+        return resp
+
+    def generate_bilingual_file(self, projectUid, payload=None, params=None, headers=None):
+        resp = self.post3(self.url + 'projects/{}/jobs/bilingualFile'.format(projectUid), payload, params, headers)
         return resp
