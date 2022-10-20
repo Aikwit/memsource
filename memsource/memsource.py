@@ -358,6 +358,11 @@ class Memsource():
         resp = self.get3(req_str, payload, params, headers)
         return resp
 
+    def list_projects(self, payload=None, params=None, headers=None):
+        req_str = self.url + "projects"
+        resp = self.get3(req_str, payload, params, headers)
+        return resp
+
     # https://cloud.memsource.com/web/api2/v1/projects/{projectUid}/jobs/{jobUid}/segments
     def get_segments(self, projectUid, jobUid, payload=None, params=None, headers=None):
         req_str = self.url + "projects/" + str(projectUid) + "/jobs/" + str(jobUid) + "/segments"
