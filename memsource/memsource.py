@@ -80,7 +80,7 @@ class Memsource():
         else:
             headers["Authorization"] = f'ApiToken {self.auth_token}'
 
-        if headers["Content-Type"] == "application/octet-stream":
+        if "Content-Type" in headers and headers["Content-Type"] == "application/octet-stream":
             response = requests.request("POST", url, data=payload, params=params, headers=headers)
         else:
 
