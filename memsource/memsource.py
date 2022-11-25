@@ -128,6 +128,25 @@ class Memsource():
         resp = requests.put(url, data=json.dumps(payload), params=params, headers=headers)
         return resp
 
+    def patch3(self, url, payload=None, params=None, headers=None):
+
+        if not payload:
+            payload={}
+
+        if not params:
+            params={}
+
+        if not headers:
+            headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': f'ApiToken {self.auth_token}'
+            }
+        else:
+            headers["Authorization"] = f'ApiToken {self.auth_token}'
+
+        resp = requests.patch(url, data=json.dumps(payload), params=params, headers=headers)
+        return resp
 
 
     #done
@@ -383,4 +402,9 @@ class Memsource():
 
     def generate_bilingual_file(self, projectUid, payload=None, params=None, headers=None):
         resp = self.post3(self.url + 'projects/{}/jobs/bilingualFile'.format(projectUid), payload, params, headers)
+        return resp
+
+    def patch_project(self, payload=None, params=None, headers=None):
+        req_str = self.url + 'projects'
+        resp = self.post3(req_str, payload, params, headers)
         return resp
