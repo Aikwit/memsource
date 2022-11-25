@@ -406,5 +406,10 @@ class Memsource():
 
     def patch_project(self, projectUid, payload=None, params=None, headers=None):
         req_str = self.url + 'projects/{}'.format(projectUid)
+        resp = self.patch3(req_str, payload, params, headers)
+        return resp
+
+    def add_target_languages(self, projectUid, payload=None, params=None, headers=None):
+        req_str = self.url + 'projects/{}/targetLangs'.format(projectUid)
         resp = self.post3(req_str, payload, params, headers)
         return resp
