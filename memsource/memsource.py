@@ -226,7 +226,7 @@ class Memsource():
 
     def add_translation_memory(self, projectUid, payload=None, params=None, headers=None):
         req_str = self.url + 'projects/' + projectUid +'/transMemories'
-        req_str = req_str.replace('web/api2/v1/', 'web/api2/v2/')
+        req_str = req_str.replace('web/api2/v1/', 'web/api2/v3/')
         resp = self.put3(req_str, payload, params, headers)
         return resp
 
