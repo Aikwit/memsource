@@ -128,6 +128,26 @@ class Memsource():
         resp = requests.put(url, data=json.dumps(payload), params=params, headers=headers)
         return resp
 
+    def put4(self, url, payload=None, params=None, headers=None):
+
+        if not payload:
+            payload={}
+
+        if not params:
+            params={}
+
+        if not headers:
+            headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': f'ApiToken {self.auth_token}'
+            }
+        else:
+            headers["Authorization"] = f'ApiToken {self.auth_token}'
+
+        resp = requests.put(url, data=payload, params=params, headers=headers)
+        return resp
+
     def patch3(self, url, payload=None, params=None, headers=None):
 
         if not payload:
@@ -416,5 +436,5 @@ class Memsource():
 
     def update_bilingual_file(self, payload=None, params=None, headers=None):
         req_str = self.url + 'bilingualFiles'
-        resp = self.put3(req_str, payload, params, headers)
+        resp = self.put4(req_str, payload, params, headers)
         return resp
