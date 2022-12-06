@@ -413,3 +413,8 @@ class Memsource():
         req_str = self.url + 'projects/{}/targetLangs'.format(projectUid)
         resp = self.post3(req_str, payload, params, headers)
         return resp
+
+    def update_bilingual_file(self, payload=None, params=None, headers=None):
+        req_str = self.url + 'bilingualFiles'
+        resp = self.put3(req_str, payload, params, headers)
+        return resp
