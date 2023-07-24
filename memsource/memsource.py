@@ -438,3 +438,8 @@ class Memsource():
         req_str = self.url + 'bilingualFiles'
         resp = self.put4(req_str, payload, params, headers)
         return resp
+    
+    def create_import_settings(self, payload=None, params=None, headers=None):
+        req_str = self.url + 'importSettings'
+        resp = self.post3(req_str, payload, params, headers)
+        return resp
